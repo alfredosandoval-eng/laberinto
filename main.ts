@@ -1,6 +1,5 @@
-let Count = 0
 let Minuto = 0
-music.play(music.stringPlayable("E - E - E - B - ", 140), music.PlaybackMode.UntilDone)
+let Count = 0
 basic.forever(function () {
     while (pins.digitalReadPin(DigitalPin.P1) == 0) {
         basic.showNumber(Minuto)
@@ -8,5 +7,8 @@ basic.forever(function () {
         basic.pause(1000)
         Count += 1
     }
-    basic.showString("" + (Count))
+    if (pins.digitalReadPin(DigitalPin.P1) == 1) {
+        led.stopAnimation()
+        basic.showString("" + (Count))
+    }
 })
